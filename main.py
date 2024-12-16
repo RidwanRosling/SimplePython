@@ -1,6 +1,6 @@
 # Import modul data_barang yang berisi daftar barang
 from data_barang import daftar_barang
-
+print("hello world")
 def tampilkan_barang():
     print("\n=== Daftar Barang ===")
     print("Kode\tNama\t\tHarga")
