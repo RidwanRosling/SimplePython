@@ -1,20 +1,17 @@
 # program kasir sederhana
-from data_barang import daftar_barang
+from data_barang import db
+import pandas as pd
 print("hello world")
+
+
+
 def tampilkan_barang():
     print("\n=== Daftar Barang ===")
-    print("Kode\tNama\t\tHarga")
-    print("-" * 30)
-    # barang adalah variabel lokal yang digunakan untuk mewakili setiap elemen dalam list daftar_barang saat dilakukan iterasi.
-
-    for barang in daftar_barang:
-        print(f"{barang['kode']}\t{barang['nama']}\t\tRp {barang['harga']:,}")
-    # for key, value in daftar_barang.items():
-    #     print(f"Key: {key}: Value: {value}")
+    print(pd.DataFrame(db).to_string(index=False))
 
 
 def cari_barang(kode):
-    for barang in daftar_barang:
+    for barang in db:
         if barang['kode'] == kode:
             return barang
     return None
