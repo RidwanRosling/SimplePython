@@ -1,12 +1,17 @@
-# Import modul data_barang yang berisi daftar barang
+# program kasir sederhana
 from data_barang import daftar_barang
 print("hello world")
 def tampilkan_barang():
     print("\n=== Daftar Barang ===")
     print("Kode\tNama\t\tHarga")
     print("-" * 30)
+    # barang adalah variabel lokal yang digunakan untuk mewakili setiap elemen dalam list daftar_barang saat dilakukan iterasi.
+
     for barang in daftar_barang:
         print(f"{barang['kode']}\t{barang['nama']}\t\tRp {barang['harga']:,}")
+    # for key, value in daftar_barang.items():
+    #     print(f"Key: {key}: Value: {value}")
+
 
 def cari_barang(kode):
     for barang in daftar_barang:
@@ -17,6 +22,7 @@ def cari_barang(kode):
 def hitung_total(keranjang):
     total = 0
     for item in keranjang:
+        print(item)
         total += item['harga'] * item['jumlah']
     return total
 
@@ -51,6 +57,7 @@ def main():
             kode = input("\nMasukkan kode barang: ").upper()
             barang = cari_barang(kode)
             
+            # Jika barang ditemukan barang tidak bernilai None
             if barang:
                 jumlah = int(input(f"Masukkan jumlah {barang['nama']}: "))
                 item = {
@@ -66,6 +73,7 @@ def main():
         elif pilihan == "3":
             if not keranjang:
                 print("\nKeranjang masih kosong!")
+                # akan kembali ke awal loop
                 continue
                 
             total = hitung_total(keranjang)
